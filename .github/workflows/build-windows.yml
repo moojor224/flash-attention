@@ -52,7 +52,7 @@ jobs:
       - name: Setup Mamba
         uses: conda-incubator/setup-miniconda@v3
         with:
-          architecture: windows-latest
+          architecture: x86
           miniconda-version: latest
           activate-environment: "build"
           python-version: ${{ matrix.pyver }}
