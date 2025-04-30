@@ -55,9 +55,9 @@ jobs:
           # architecture: x86
           activate-environment: "build"
           python-version: ${{ matrix.pyver }}
-          miniforge-variant: Mambaforge
-          miniforge-version: latest
-          use-mamba: true
+          # miniforge-variant: Mambaforge
+          # miniforge-version: latest
+          # use-mamba: true
           add-pip-as-python-dependency: true
           auto-activate-base: false
 
@@ -68,7 +68,7 @@ jobs:
           $cudaChannels = ''
           $cudaNum = [int]$cudaVersion.substring($cudaVersion.LastIndexOf('.')+1)
           while ($cudaNum -ge 0) { $cudaChannels += '-c nvidia/label/cuda-' + $cudaVersion.Remove($cudaVersion.LastIndexOf('.')+1) + $cudaNum + ' '; $cudaNum-- }
-          mamba install -y 'cuda' $cudaChannels.TrimEnd().Split()
+          conda install -y 'cuda' $cudaChannels.TrimEnd().Split()
           if (!(mamba list cuda)[-1].contains('cuda')) {sleep -s 10; mamba install -y 'cuda' $cudaChannels.TrimEnd().Split()}
           if (!(mamba list cuda)[-1].contains('cuda')) {throw 'CUDA Toolkit failed to install!'}
           
