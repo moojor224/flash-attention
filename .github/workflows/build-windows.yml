@@ -35,6 +35,10 @@ jobs:
         PCKGVER: ${{ inputs.version }}
 
     steps:
+      - name: Configure Git
+        run: |
+          git config --system core.longpaths true
+
       - uses: actions/checkout@v4
         with:
           repository: 'Dao-AILab/flash-attention'
