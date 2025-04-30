@@ -52,7 +52,7 @@ jobs:
       - name: Setup Mamba
         uses: conda-incubator/setup-miniconda@v3
         with:
-          architecture: x86
+          # architecture: x86
           activate-environment: "build"
           python-version: ${{ matrix.pyver }}
           miniforge-variant: Mambaforge
