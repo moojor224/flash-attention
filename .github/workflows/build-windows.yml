@@ -56,9 +56,9 @@ jobs:
           miniconda-version: latest
           activate-environment: "build"
           python-version: ${{ matrix.pyver }}
-          # miniforge-variant: Mambaforge
-          # miniforge-version: latest
-          # use-mamba: true
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          use-mamba: true
           add-pip-as-python-dependency: true
           auto-activate-base: false
 
