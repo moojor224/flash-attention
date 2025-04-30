@@ -69,8 +69,8 @@ jobs:
           $cudaNum = [int]$cudaVersion.substring($cudaVersion.LastIndexOf('.')+1)
           while ($cudaNum -ge 0) { $cudaChannels += '-c nvidia/label/cuda-' + $cudaVersion.Remove($cudaVersion.LastIndexOf('.')+1) + $cudaNum + ' '; $cudaNum-- }
           conda install -y 'cuda' $cudaChannels.TrimEnd().Split()
-          if (!(mamba list cuda)[-1].contains('cuda')) {sleep -s 10; mamba install -y 'cuda' $cudaChannels.TrimEnd().Split()}
-          if (!(mamba list cuda)[-1].contains('cuda')) {throw 'CUDA Toolkit failed to install!'}
+          if (!(conda list cuda)[-1].contains('cuda')) {sleep -s 10; conda install -y 'cuda' $cudaChannels.TrimEnd().Split()}
+          if (!(conda list cuda)[-1].contains('cuda')) {throw 'CUDA Toolkit failed to install!'}
           
           python -m pip install --upgrade build setuptools wheel packaging ninja torch==2.1.0 --extra-index-url "https://download.pytorch.org/whl/cu$cudaVersionPytorch"
 
