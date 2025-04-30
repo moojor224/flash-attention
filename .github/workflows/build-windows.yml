@@ -72,7 +72,7 @@ jobs:
           if (!(conda list cuda)[-1].contains('cuda')) {sleep -s 10; conda install -y 'cuda' $cudaChannels.TrimEnd().Split()}
           if (!(conda list cuda)[-1].contains('cuda')) {throw 'CUDA Toolkit failed to install!'}
           
-          python -m pip install --upgrade build setuptools wheel packaging ninja torch==2.1.0 --extra-index-url "https://download.pytorch.org/whl/cu$cudaVersionPytorch"
+          python -m pip install --upgrade psutil build setuptools wheel packaging ninja torch==2.1.0 --extra-index-url "https://download.pytorch.org/whl/cu$cudaVersionPytorch"
 
       - name: Build Wheel
         id: build-wheel
